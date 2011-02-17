@@ -24,8 +24,8 @@ class Song
   end
 
   def play
-    @times_played += 1  #only this instance has access to this data
-    @@total_played += 1 #all instances share this data
+    @times_played += 1  # only this instance has access to this data
+    @@total_played += 1 # all instances share this data
   end
 
   def times_played

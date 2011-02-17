@@ -1,6 +1,10 @@
 class Accounts
-  @cheque = Cheque.new(5000)
-  @savings = Savings.new(5000)
+  attr_reader :cheque, :savings
+  
+  def initialize()
+    @cheque = Cheque.new(5000)
+    @savings = Savings.new(5000)
+  end
   
   private # all subsequent methods are marked private 
     def debit(account, amount)
@@ -19,8 +23,8 @@ class Accounts
 end
 
 class Account
-  public :balance    # Another way of marking the access control on a field or method!!
-  attr_reader :balance
+  #public :balance    # Another way of marking the access control on a field or method!!
+  attr_accessor :balance
 
   def initialize(opening_balance)
     @balance = opening_balance 
