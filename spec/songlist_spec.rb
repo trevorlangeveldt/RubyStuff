@@ -10,7 +10,6 @@ describe "Class/static methods" do
     @song2 = Song.new("Songname2", "Artistname2", 496)
     @song3 = Song.new("Songname3", "Artistname3", 74)
     @song4 = Song.new("Songname4", "Artistname4", 724)
-        
   end
   
   before(:each) do
