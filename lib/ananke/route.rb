@@ -5,11 +5,11 @@ module Repository
   module User
     @data = [ { 
                 :id => '1', 
-                :name => 'One'
+                :name => 'User1'
               }, 
               {
                 :id => '2', 
-                :name => 'Two'
+                :name => 'User2'
               } ]
               
     def self.all
