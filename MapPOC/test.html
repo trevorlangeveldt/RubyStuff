@@ -1,0 +1,36 @@
+<script language="javascript" src="http://www.streetmaps.co.za/aatutil.js?Key=GUGXRYJULQRDBQTXSKKPBNULPTTWTDHO"></script>
+<script language="javascript" src="http://www.streetmaps.co.za/aatmaps.js?Key=GUGXRYJULQRDBQTXSKKPBNULPTTWTDHO"></script>
+
+<!DOCTYPE html "-//W3C//DTD XHTML 1.0 Strict//EN"   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>StreeMaps JavaScript API Example</title>
+    <script>
+    function displayMap()
+    {
+      // set up the main map window
+      myMap = new CAatMap();
+      // Define the DIV the map will live in
+      myMap.SetOutput("map1");
+      // Add a map layer, level 500 (higher is lower down)
+      var newlayer = myMap.AddLayer("map",500);
+      // Turn off the "points" button, won't be used in this example
+      myMap.SetPointsButtons(false);
+      // Set a starting point for the map
+      myMap.Jump(31.039006,-29.855916,0.005);
+      // Start in map view
+      newlayer.SetType("map");
+      myMap.Init();
+    }
+    </script>
+</head>
+
+<body  onload="displayMap();">
+    <table width=400 height=500  border=0>
+        <tr>
+              <td colspan=2> <div style="width:500;height:500;" id="map1" ></div></td>
+        </tr>
+    </table>
+</body>    
+
+</html>
