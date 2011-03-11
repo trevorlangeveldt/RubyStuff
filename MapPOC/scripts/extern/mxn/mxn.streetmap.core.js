@@ -17,13 +17,13 @@ Mapstraction: {
   init: function(element,api) {   
     var me = this;
     this.maps[api] = new CAatMap();
-    this.maps[api].SetOutput(element);
+    this.maps[api].SetOutput(element.id);
     
-    var newlayer = myMap.AddLayer("map",500);
+    var newlayer = this.maps[api].AddLayer("map",500);
     // Turn off the "points" button, won't be used in this example
-    myMap.SetPointsButtons(false);
+    this.maps[api].SetPointsButtons(false);
     // Set a starting point for the map
-    myMap.Jump(31.039006,-29.855916,0.005);
+    this.maps[api].Jump(31.039006,-29.855916,0.005);
     // Start in map view
     newlayer.SetType("map");
     this.maps[api].Init();
