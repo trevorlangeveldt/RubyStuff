@@ -27,6 +27,12 @@ Mapstraction: {
     // Start in map view
     newlayer.SetType("map");
     this.maps[api].Init();
+  },
+  
+  applyOptions: function(){
+    var map = this.maps[this.api];
+  
+    // TODO: Add provider code
   }
 }
 });

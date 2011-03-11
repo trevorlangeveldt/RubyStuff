@@ -23,7 +23,7 @@
       // create mxn object
       //mapService = new mxn.Mapstraction('mapdiv','googlev3');
       //mapService = new mxn.Mapstraction('mapdiv','yahoo');
-      mapService = new mxn.Mapstraction('mapdiv','streetmap');
+      mapService = new mxn.Mapstraction("mapdiv",'streetmap');
 
       mapService.addControls({
         pan: true,
@@ -41,22 +41,13 @@
       //var marker = new mxn.Marker(latlon);
       //mapService.addMarker(marker,true);
     }
-    
-    function user_submit() {
-      //mapService = new mxn.Mapstraction('mapdiv','yahoo');
-    }
   </script>
   </head>
   <body onload="initialize();">
     <table>
       <tr style="width: 100%; height: 90%">
         <div id="mapdiv" style="width: 100%; height: 100%"></div>
-      </tr>
-      <tr>
-        <td>
-          <a href="#" onclick="user_submit(); return false;">Change Provider</a>
-        </td>
-      </tr>
+      </tr>      
     </table>    
   </body> 
 </html>
