@@ -19,12 +19,11 @@ Mapstraction: {
     this.maps[api] = new CAatMap();
     this.maps[api].SetOutput(element.id);
     
-    var newlayer = this.maps[api].AddLayer("map",500);
+    var newlayer = this.maps[api].AddLayer("map",500,"MappingLayer");
     // Turn off the "points" button, won't be used in this example
     //this.maps[api].SetPointsButtons(false);
-    // Set a starting point for the map
-    // Start in map view
     newlayer.SetType("map");
+    
     this.maps[api].Init();
   },
   
@@ -37,9 +36,36 @@ Mapstraction: {
   setCenterAndZoom: function(point, zoom) { 
 		var map = this.maps[this.api];
 				
-		map.Jump(point.lat, point.lon);
-		//map.setZoom(zoom);
+		map.Jump(point.lat, point.lon, zoom);		
+  },
+  
+  setMapType: function(type) {
+		var map = this.maps[this.api];
+		var layer = map.GetLayer("MappingLayer");
+		
+		switch(type) {
+		case mxn.Mapstraction.ROAD:
+			layer.SetType("map");
+			break;
+		case mxn.Mapstraction.SATELLITE:
+			layer.SetType("sat");
+			break;
+		case mxn.Mapstraction.HYBRID:
+			layer.SetType("hybrid");
+			break;
+		default:
+			layer.SetType("map");
+		}
 	},
+	
+	addMarker: function(marker, old) {
+		//var map = this.maps[this.api];
+		//var pin = marker.toProprietary(this.api);
+	
+		//map.addOverlay(pin);
+	
+		//return pin;
+	}
 	
 	/*LatLonPoint: {
 	
@@ -70,21 +96,6 @@ Mapstraction: {
 		// TODO: Add provider code
 	},
   
-  setMapType: function(type) {
-		var map = this.maps[this.api];
-		switch(type) {
-		case mxn.Mapstraction.ROAD:
-			// TODO: Add provider code
-			break;
-		case mxn.Mapstraction.SATELLITE:
-			// TODO: Add provider code
-			break;
-		case mxn.Mapstraction.HYBRID:
-			// TODO: Add provider code
-			break;
-		default:
-			// TODO: Add provider code
-		}
-	}*/
+*/
 }
 });
