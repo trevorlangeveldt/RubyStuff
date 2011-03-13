@@ -59,19 +59,19 @@ Mapstraction: {
 	},
 	
 	addMarker: function(marker, caption) {
-		
-		var map = this.maps[this.api];
-		
-		var pin = marker.toProprietary(marker, caption);
+   		var map = this.maps[this.api];
+   		
+   		var pin = marker.toProprietary(marker, map, caption);
 	
 		//map.addOverlay(pin);
 	
-		//return pin;
-	},
+		return pin;
+	}
+},
 	
-	Marker: {
+Marker: {
 	
-	toProprietary: function(marker, caption) {
+	toProprietary: function(marker, map, caption) {
 		var points;
 		
 		if ((points = map.GetLayer("PointsLayer")) == null) {
@@ -85,7 +85,7 @@ Mapstraction: {
   			pnt.SetIcon("http://www.streetmaps.co.za/img/aat_logo.png");
   		}
   		
-  		if (!marker.iconAnchor || marker.iconAnchor == ""){
+  		if (!marker.iconAnchor || marker.iconAnchor == "") {
   			pnt.SetIconAnchor("center","center");
   		}
   		
@@ -93,12 +93,15 @@ Mapstraction: {
   		pnt.SetLabelAnchor("iconcenter","iconcenter");
  		pnt.SetClickBehaviour("toggle_icon_label");
   		pnt.SetStyle("label");
-  		pnt.SetIconSize(48,34);
+  		
+  		if (!marker.iconSize || marker.iconSize.length < 2) {
+  			pnt.SetIconSize(marker.iconSize[0],marker.iconSize[1]);
+  		}
   		
 		return pnt;
+		}
 	}
-	}
-	
+});
 	/*LatLonPoint: {
 	
 		toProprietary: function() {
@@ -129,5 +132,3 @@ Mapstraction: {
 	},
   
 */
-}
-});
