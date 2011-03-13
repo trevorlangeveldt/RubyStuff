@@ -15,15 +15,14 @@ mxn.register('streetmap', {
 Mapstraction: {
   
   init: function(element,api) {   
-    var me = this;
+    
     this.maps[api] = new CAatMap();
     this.maps[api].SetOutput(element.id);
     
     var newlayer = this.maps[api].AddLayer("map",500);
     // Turn off the "points" button, won't be used in this example
-    this.maps[api].SetPointsButtons(false);
+    //this.maps[api].SetPointsButtons(false);
     // Set a starting point for the map
-    this.maps[api].Jump(31.039006,-29.855916,0.005);
     // Start in map view
     newlayer.SetType("map");
     this.maps[api].Init();
@@ -33,6 +32,59 @@ Mapstraction: {
     var map = this.maps[this.api];
   
     // TODO: Add provider code
-  }
+  },
+  
+  setCenterAndZoom: function(point, zoom) { 
+		var map = this.maps[this.api];
+				
+		map.Jump(point.lat, point.lon);
+		//map.setZoom(zoom);
+	},
+	
+	/*LatLonPoint: {
+	
+		toProprietary: function() {
+			//return new google.maps.LatLng(this.lat, this.lon);
+		},
+
+		fromProprietary: function(googlePoint) {
+			//this.lat = googlePoint.lat();
+			//this.lon = googlePoint.lng();
+		}
+
+
+	},
+  
+  addMarker: function(marker, old) {
+		//var map = this.maps[this.api];
+		//var pin = marker.toProprietary(this.api);
+	
+		//map.addOverlay(pin);
+	
+		//return pin;
+	},
+
+	removeMarker: function(marker) {
+		//var map = this.maps[this.api];
+	
+		// TODO: Add provider code
+	},
+  
+  setMapType: function(type) {
+		var map = this.maps[this.api];
+		switch(type) {
+		case mxn.Mapstraction.ROAD:
+			// TODO: Add provider code
+			break;
+		case mxn.Mapstraction.SATELLITE:
+			// TODO: Add provider code
+			break;
+		case mxn.Mapstraction.HYBRID:
+			// TODO: Add provider code
+			break;
+		default:
+			// TODO: Add provider code
+		}
+	}*/
 }
 });

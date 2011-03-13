@@ -25,17 +25,17 @@
       //mapService = new mxn.Mapstraction('mapdiv','yahoo');
       mapService = new mxn.Mapstraction("mapdiv",'streetmap');
 
-      mapService.addControls({
+      /*mapService.addControls({
         pan: true,
         zoom: 'small',
         map_type: true
-      });
+      });*/
 //<script src="./scripts/extern/mxn/mxn.js?(googlev3,[geocoder])" type="text/javascript">
 //<script src="./scripts/extern/mxn/mxn.js?(yahoo)" type="text/javascript">
-      //var latlon = new mxn.LatLonPoint(-33.7, 18.5);
-
+      var latlon = new mxn.LatLonPoint(-33.7, 18.5);
+	
       //mapService.setMapType(mxn.Mapstraction.ROADMAP);
-      //mapService.setCenterAndZoom(latlon, 7);
+      mapService.setCenterAndZoom(latlon, 7);
     
       // add a marker
       //var marker = new mxn.Marker(latlon);
