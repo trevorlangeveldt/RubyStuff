@@ -33,10 +33,10 @@ Mapstraction: {
     // TODO: Add provider code
   },
   
-  setCenterAndZoom: function(point, zoom) { 
+  setCenterAndZoom: function(pnt, zoom) { 
 		var map = this.maps[this.api];
 				
-		map.Jump(point.lat, point.lon, zoom);		
+		map.Jump(pnt.lat, pnt.lon, zoom);		
   },
   
   setMapType: function(type) {
@@ -58,13 +58,45 @@ Mapstraction: {
 		}
 	},
 	
-	addMarker: function(marker, old) {
-		//var map = this.maps[this.api];
-		//var pin = marker.toProprietary(this.api);
+	addMarker: function(marker, caption) {
+		
+		var map = this.maps[this.api];
+		
+		var pin = marker.toProprietary(marker, caption);
 	
 		//map.addOverlay(pin);
 	
 		//return pin;
+	},
+	
+	Marker: {
+	
+	toProprietary: function(marker, caption) {
+		var points;
+		
+		if ((points = map.GetLayer("PointsLayer")) == null) {
+			points = map.AddLayer("point",1,"PointsLayer");
+		}
+		
+		var pnt = points.AddPoint(marker.location.lat, marker.location.lon, caption, 'id');
+		//Display a icon of your choice            
+  		//Marker.prototype.setIcon = function(iconUrl, iconSize, iconAnchor) {
+  		if (!marker.iconUrl || marker.iconUrl == "") {
+  			pnt.SetIcon("http://www.streetmaps.co.za/img/aat_logo.png");
+  		}
+  		
+  		if (!marker.iconAnchor || marker.iconAnchor == ""){
+  			pnt.SetIconAnchor("center","center");
+  		}
+  		
+  		pnt.SetTooltip("Johannesburg");
+  		pnt.SetLabelAnchor("iconcenter","iconcenter");
+ 		pnt.SetClickBehaviour("toggle_icon_label");
+  		pnt.SetStyle("label");
+  		pnt.SetIconSize(48,34);
+  		
+		return pnt;
+	}
 	}
 	
 	/*LatLonPoint: {

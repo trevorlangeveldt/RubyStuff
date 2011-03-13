@@ -37,8 +37,9 @@
       mapService.setCenterAndZoom(latlon, 2.56);
       
       // add a marker
-      //var marker = new mxn.Marker(latlon);
-      //mapService.addMarker(marker,true);
+      var marker = new mxn.Marker(latlon);
+      marker.setIcon('http://www.streetmaps.co.za/img/aat_logo.png', [27,31], [20.7,-30.5]);
+      mapService.addMarker(marker,true);
     }
   </script>
   </head>
